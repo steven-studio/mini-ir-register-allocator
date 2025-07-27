@@ -9,7 +9,16 @@ def compute_live_intervals(ir):
     # key: 變數, value: [start, end]
     intervals = {}
     for idx, line in enumerate(ir):
-        tokens = line.replace('=', ' ').replace('+', ' ').replace('*', ' ').replace('return', ' ').split()
+        tokens = (
+            line.replace('=', ' ')
+                .replace('+', ' ')
+                .replace('-', ' ')
+                .replace('*', ' ')
+                .replace('/', ' ')
+                .replace('%', ' ')
+                .replace('return', ' ')
+                .split()
+        )
         for t in tokens:
             if t.isalpha():
                 if t not in intervals:
